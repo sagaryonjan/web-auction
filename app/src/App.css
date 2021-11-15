@@ -1,0 +1,13 @@
+.card-img-top {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+}
+
+.products {
+  margin: 1rem 0 3rem;
+}
+
+.products .card {
+  margin-top: 2rem;
+}

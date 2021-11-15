@@ -1,0 +1,61 @@
+version: '3.7'
+services:
+    app:
+        build:
+            context: ./app
+            dockerfile: Dockerfile
+            target: development
+        container_name: webauction-app
+        volumes:
+            - ./app/src:/app/src
+        ports:
+            - 3000:3000
+        #depends_on:
+            #- api
+    api:
+        build:
+            args:
+                user: sammy
+                uid: 1000
+            context: ./api
+            dockerfile: Dockerfile
+        image: webauction
+        container_name: webauction-api
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./api:/var/www
+        networks:
+            - webauction
+
+    db:
+        image: mysql:8.0
+        env_file:
+            - ./api/.env
+        container_name: webauction-db
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: webauction-app
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_PASSWORD: root
+            MYSQL_USER: root
+            SERVICE_TAGS: dev
+            SERVICE_NAME: mysql
+        volumes:
+            - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+        networks:
+            - webauction
+    nginx:
+        image: nginx:alpine
+        container_name: webauction-nginx
+        restart: unless-stopped
+        ports:
+            - 8001:80
+        volumes:
+            - ./api/:/var/www
+            - ./docker-compose/nginx:/etc/nginx/conf.d/
+        networks:
+            - webauction
+networks:
+  webauction:
+    driver: bridge
