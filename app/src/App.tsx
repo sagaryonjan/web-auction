@@ -1,16 +1,13 @@
-import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import NavBar from "./components/NavBar";
-import Products from "./components/Products";
-import ProductDetail from "./components/ProductDetail";
+import AppBody from "./components/AppBody";
 
 const App = () => {
   return (
     <div>
       <NavBar />
-      {/* <Products /> */}
-      <ProductDetail />
+      <AppBody />
     </div>
   );
 };

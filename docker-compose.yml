@@ -7,7 +7,7 @@ services:
             target: development
         container_name: webauction-app
         volumes:
-            - ./app/src:/app/src
+            - ./app:/app
         ports:
             - 3000:3000
         #depends_on:
