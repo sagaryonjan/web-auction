@@ -1,6 +1,17 @@
 import React from "react";
+import { isUserLoggedIn } from "../services/auth";
 
-const NavBar = () => {
+interface NavBarProps {
+  handeLogoutRoute: Function;
+}
+
+const NavBar = ({ handeLogoutRoute }: NavBarProps) => {
+
+  const logout = () => {
+    localStorage.removeItem('USER_ID');
+    handeLogoutRoute();
+  }
+
   return (
     <>
       <div className="py-3">
@@ -27,9 +38,12 @@ const NavBar = () => {
                       </a>
                     </li>
                   </ul>
-                  <a href="#" className="btn btn-primary" type="button">
-                    Login
-                  </a>
+                  {isUserLoggedIn() && (
+                    <a className="btn btn-primary" onClick={logout} type="button">
+                      Logout
+                    </a>
+                  )}
+
                 </div>
               </nav>
             </div>

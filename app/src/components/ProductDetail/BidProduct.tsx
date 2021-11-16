@@ -20,7 +20,10 @@ const BidProduct = ({ product }: BidProductProps) => {
         if (error.status) { setError(error.message); return; }
 
         try {
-            await bidProduct(product.id, { bid_amount: bidAmount })
+            await bidProduct(product.id, {
+                bid_amount: bidAmount,
+                user_id: localStorage.getItem('USER_ID')
+            })
         } catch (error: any) {
             if (error?.response?.status === HTTP_UNPROCESSABLE_ENTITY) {
                 const [errorMsg] = error.response.data.errors.bid_amount;
@@ -55,6 +58,10 @@ const BidProduct = ({ product }: BidProductProps) => {
                     className={`form-control ${error && 'is-invalid'}`} />
                 {error && (<div className="invalid-feedback">{error}</div>)}
 
+            </div>
+            <div className="form-check">
+                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
+                <label className="form-check-label" >Check me out</label>
             </div>
             <div className="mt-4">
                 <button type="submit" className="btn btn-primary">Bid Now</button>

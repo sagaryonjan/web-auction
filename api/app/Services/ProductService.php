@@ -28,7 +28,7 @@ class ProductService
      * @return mixed
      * @throws \Throwable
      */
-    public function bidNow ($product, $request)
+    public function bidNow($product, $request)
     {
         try {
             $this->db->beginTransaction();
@@ -39,9 +39,9 @@ class ProductService
                 'price' => $request->get('bid_amount'),
             ]);
 
-            $this->autoBiddingProduct($product, $request)
+            $this->autoBiddingProduct($product, $request);
 
-            $product->update(['bid_price' => $request->get('price')]);
+            $product->update(['bid_price' => $request->get('bid_amount')]);
 
             $this->db->commit();
 
@@ -49,7 +49,7 @@ class ProductService
 
         } catch (\Exception $exception) {
             $this->db->rollBack();
-            throw $exception;
+            \Log::info($exception->getMessage());
         }
     }
 
