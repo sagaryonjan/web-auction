@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->longText('description');
             $table->dateTime('end_date');
             $table->text('image');
+            $table->unsignedInteger('auto_bid_user');
             $table->timestamps();
         });
     }

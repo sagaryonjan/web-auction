@@ -6,9 +6,7 @@ import {
   getRemainingTimeUntilMsTimestamp
 } from "../../utils/countdownTimer";
 
-interface TimeLeftCounterProps {
-  endDateTimestampMs: number
-}
+interface TimeLeftCounterProps { endDateTimestampMs: number }
 
 const TimeLeftCounter = ({ endDateTimestampMs }: TimeLeftCounterProps) => {
   const timerDefaultValue = '00';
@@ -32,7 +30,7 @@ const TimeLeftCounter = ({ endDateTimestampMs }: TimeLeftCounterProps) => {
         {remainingTime.days !== timerDefaultValue && `${remainingTime.days} Days `}
         {remainingTime.hours !== timerDefaultValue && `${remainingTime.hours} hours `}
         {remainingTime.minutes !== timerDefaultValue && `${remainingTime.minutes} minutes `}
-        {remainingTime.seconds !== timerDefaultValue ? `${remainingTime.seconds} seconds ` : 'Expired Product'}
+        {remainingTime.seconds !== timerDefaultValue ? `${remainingTime.seconds} seconds ` : '-'}
       </p>
     </div>
   );

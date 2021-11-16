@@ -9,6 +9,8 @@ class ProductBid extends Model
 {
     use HasFactory;
 
+    protected $table = 'product_bid';
+
     protected $fillable = [
         'product_id',
         'user_id',

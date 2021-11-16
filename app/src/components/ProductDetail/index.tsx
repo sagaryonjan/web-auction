@@ -1,4 +1,5 @@
 import { Product } from "../../interfaces";
+import BidProduct from "./BidProduct";
 import TimeLeftCounter from './TimeLeftCounter';
 
 interface ProductDetailProps {
@@ -6,8 +7,6 @@ interface ProductDetailProps {
 }
 
 const ProductDetail = ({ product }: ProductDetailProps) => {
-
-    const onClickBidNow = () => { };
 
     return (
         <>
@@ -29,20 +28,15 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
                             </p>
                             <h2>Current bid: ${product.bid_price}</h2>
                             <hr />
+
                             <TimeLeftCounter endDateTimestampMs={product.end_date_timestamp} />
+
                             <div className="">
                                 <span>Auction ends:</span>
                                 <p> {product.end_date}</p>
                             </div>
-                            <div className="form-group">
-                                <label className="mb-2">Enter your Bid Amount:</label>
-                                <input type="number" className="form-control" />
-                            </div>
-                            <div className="mt-4">
-                                <a onClick={onClickBidNow} className="btn btn-primary">
-                                    Bid Now
-                                </a>
-                            </div>
+
+                            <BidProduct product={product} />
                         </div>
                     </div>
                 </div>
