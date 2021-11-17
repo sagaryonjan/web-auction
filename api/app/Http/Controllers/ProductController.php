@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Resources\ProductResource;
+use App\Http\Resources\ProductResourceCollection;
 use App\Services\ProductService;
 use App\Services\UserService;
 use Illuminate\Support\Arr;
@@ -33,7 +34,19 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return ProductResource::collection(Product::all());
+        $products = Product::select(
+            'products.*',
+            \DB::raw('
+                ( SELECT user_id FROM product_bid 
+                    WHERE product_bid.product_id = products.id 
+                    ORDER BY product_bid.price DESC
+                    LIMIT 1
+                ) as user_id'
+            )
+        )->get();
+        $users = $this->userService->getUsers();
+        
+        return ProductResourceCollection::make($products)->setUsers($users);
     }
 
     /**

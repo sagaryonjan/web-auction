@@ -26,7 +26,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
                             <p className="text-muted">
                                 {product.description}
                             </p>
-                            <h2>Current bid: ${product.bid_price}</h2>
+                            <h2>Current bid: ${product.bid_price} {product?.user?.username && `by ${product?.user?.username}`}</h2>
                             <hr />
 
                             <TimeLeftCounter endDateTimestampMs={product.end_date_timestamp} />

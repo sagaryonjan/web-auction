@@ -8,4 +8,7 @@ export interface Product {
   auto_bid_user: number;
   end_date_timestamp: number;
   description: string;
+  user: {
+    username: string;
+  }
 }
