@@ -36,8 +36,6 @@ class ProductController extends Controller
         return ProductResource::collection(Product::all());
     }
 
-    
-
     /**
      * Product bid now
      *

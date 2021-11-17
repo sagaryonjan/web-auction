@@ -10,8 +10,9 @@ interface BidProductProps {
 
 const BidProduct = ({ product }: BidProductProps) => {
 
-    const [bidAmount, setBidAmount] = useState<number>(product.bid_price + 1);
     const [error, setError] = useState<string>('');
+    const [autoBiding, setAutoBiding] = useState<boolean>(false);
+    const [bidAmount, setBidAmount] = useState<number>(product.bid_price + 1);
 
     const onSubmitBidNow = async (e: any) => {
         e.preventDefault();
@@ -20,9 +21,11 @@ const BidProduct = ({ product }: BidProductProps) => {
         if (error.status) { setError(error.message); return; }
 
         try {
+
             await bidProduct(product.id, {
                 bid_amount: bidAmount,
-                user_id: localStorage.getItem('USER_ID')
+                user_id: localStorage.getItem('USER_ID'),
+                auto_biding: autoBiding
             })
         } catch (error: any) {
             if (error?.response?.status === HTTP_UNPROCESSABLE_ENTITY) {
@@ -47,6 +50,8 @@ const BidProduct = ({ product }: BidProductProps) => {
         setBidAmount(e.target.value);
     }
 
+    const onCheckAutoBiding = () => setAutoBiding(!autoBiding);
+
     return (
         <form onSubmit={onSubmitBidNow}>
             <div className="form-group">
@@ -57,12 +62,19 @@ const BidProduct = ({ product }: BidProductProps) => {
                     onChange={onChangeBidAmount}
                     className={`form-control ${error && 'is-invalid'}`} />
                 {error && (<div className="invalid-feedback">{error}</div>)}
+            </div>
 
-            </div>
-            <div className="form-check">
-                <input type="checkbox" className="form-check-input" id="exampleCheck1" />
-                <label className="form-check-label" >Check me out</label>
-            </div>
+            {!product.auto_bid_user && (
+                <div className="form-check">
+                    <input type="checkbox"
+                        className="form-check-input"
+                        checked={autoBiding}
+                        onChange={onCheckAutoBiding}
+                    />
+                    <label className="form-check-label" >Auto Bid By 1$</label>
+                </div>
+            )}
+
             <div className="mt-4">
                 <button type="submit" className="btn btn-primary">Bid Now</button>
             </div>

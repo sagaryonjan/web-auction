@@ -33,15 +33,22 @@ class ProductService
         try {
             $this->db->beginTransaction();
 
-            $this->productBid->create([
-                'product_id' => $product->id,
-                'user_id'    => $request->get('user_id'),
-                'price' => $request->get('bid_amount'),
-            ]);
+            $attributes = [
+                'product_id'    => $product->id,
+                'user_id'       => $request->get('user_id'),
+                'price'         => $request->get('bid_amount'),
+            ];
+            $this->productBid->create($attributes);
+            
+            if($product->auto_bid_user) {
+                $productBid = $this->autoBiddingProduct($product, $request);
+                $attributes['price'] = $productBid->price;
+            }
 
-            $this->autoBiddingProduct($product, $request);
-
-            $product->update(['bid_price' => $request->get('bid_amount')]);
+            $product->bid_price = $attributes['price'];
+            if($request->get('auto_biding')) 
+                $product->auto_bid_user = $request->get('user_id');
+            $product->save();
 
             $this->db->commit();
 
@@ -54,12 +61,10 @@ class ProductService
     }
 
     public function autoBiddingProduct($product, $request) {
-        if($product->auto_bid_user) {
-            $this->productBid->create([
-                'product_id' => $product->id,
-                'user_id'    => $product->auto_bid_user,
-                'price' => $request->get('bid_amount') + 1,
-            ]);
-        }
+        return $this->productBid->create([
+            'product_id' => $product->id,
+            'user_id'    => $product->auto_bid_user,
+            'price' => $request->get('bid_amount') + 1,
+        ]);
     }
 }

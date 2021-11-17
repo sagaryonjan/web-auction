@@ -20,6 +20,7 @@ class ProductResource extends JsonResource
             'title' => $this->title,
             'start_price' => $this->start_price,
             'bid_price' => $this->bid_price,
+            'auto_bid_user' => $this->auto_bid_user,
             'description' => $this->description,
             'end_date' => $this->end_date->format('F d, Y h:i a'),
             'end_date_timestamp' => $this->end_date->getTimestampMs(),

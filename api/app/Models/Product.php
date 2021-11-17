@@ -15,6 +15,7 @@ class Product extends Model
         'bid_price',
         'description',
         'end_date',
+        'auto_bid_user'
     ];
 
     protected $casts = [
