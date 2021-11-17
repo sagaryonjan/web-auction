@@ -118,3 +118,21 @@ $ make dco/seed
 ```
 
 There are lots of shorthand commands available in make file. Do check it out ;) 
+
+#Login
+You can login into system with the below credentials:
+```$xslt
+You can log in with:
+user1
+username: user1@user.com
+password: user123
+
+user2
+username : user2@user.com
+password: user123
+
+user3
+username : user3@user.com
+password: user123
+
+```
