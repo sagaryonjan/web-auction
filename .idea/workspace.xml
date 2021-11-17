@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c760b82-d653-4d56-bbe1-ec8a4e0f6729" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/components/ProductDetail/CurrentBidAmount.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/web-auction.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/web-auction.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/api/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/Http/Controllers/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/Http/Controllers/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/app/Services/ProductService.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/app/Services/ProductService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/api/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/broadcasting.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/broadcasting.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/components/ProductDetail/BidProduct.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/components/ProductDetail/BidProduct.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/components/ProductDetail/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/components/ProductDetail/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/app/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -36,7 +20,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/components/ProductDetail/index.tsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
+              <caret line="16" column="81" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="81" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -382,12 +366,12 @@
       <workItem from="1637042529468" duration="1364000" />
       <workItem from="1637051225135" duration="108000" />
       <workItem from="1637139465128" duration="105000" />
-      <workItem from="1637147893941" duration="10796000" />
+      <workItem from="1637147893941" duration="11016000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21090000" />
+    <option name="totallyTimeSpent" value="21310000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="743" extended-state="6" />
@@ -760,7 +744,7 @@
     <entry file="file://$PROJECT_DIR$/app/src/components/ProductDetail/index.tsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="16" column="92" selection-start-line="16" selection-start-column="92" selection-end-line="16" selection-end-column="92" />
+          <caret line="16" column="81" selection-start-line="16" selection-start-column="81" selection-end-line="16" selection-end-column="81" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

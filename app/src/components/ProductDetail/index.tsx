@@ -14,7 +14,7 @@ const ProductDetail = ({ product }: ProductDetailProps) => {
 
     const productBiddingSuccessfully = () => {
         if(product.auto_bid_user) {
-            setMessage('User bid successfully. This product is auto bid by different user.');
+            setMessage('User bid successfully. This product is auto bid by a user.');
             return;
         }
         setMessage('User bid successfully.');
