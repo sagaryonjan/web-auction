@@ -3,6 +3,8 @@
 namespace App\Services;
 
 
+use Illuminate\Support\Arr;
+use App\Events\UserBidProduct;
 use App\Models\ProductBid;
 use Illuminate\Database\DatabaseManager;
 
@@ -28,10 +30,11 @@ class ProductService
      * @return mixed
      * @throws \Throwable
      */
-    public function bidNow($product, $request)
+    public function bidNow($users, $product, $request)
     {
         try {
             $this->db->beginTransaction();
+
 
             $attributes = [
                 'product_id'    => $product->id,
@@ -49,6 +52,12 @@ class ProductService
             if($request->get('auto_biding')) 
                 $product->auto_bid_user = $request->get('user_id');
             $product->save();
+
+            $userId = $product->auto_bid_user ? $product->auto_bid_user : $request->get('user_id');
+            event(new UserBidProduct(
+                Arr::first($users, fn ($value, $key) => $value['id'] == $userId),
+                $attributes['price']
+            ));
 
             $this->db->commit();
 

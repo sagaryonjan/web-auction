@@ -59,20 +59,16 @@ class ProductController extends Controller
      */
     public function bidNow(Product $product, Request $request)
     {
-        $this->bidNowValidation($product, $request);
+        $users = $this->userService->getUsers();
+        $this->bidNowValidation($users, $product, $request);
         
-        $this->productService->bidNow($product, $request);
+        $this->productService->bidNow($users, $product, $request);
 
         return new ProductResource($product);
     }
 
-    /**
-     * Bid now validation
-     */
-    private function bidNowValidation(Product $product, Request $request) 
+    private function bidNowValidation($users, Product $product, Request $request)
     {
-        $users = $this->userService->getUsers();
-
         $request->validate([
             'bid_amount' => [
                 'required',

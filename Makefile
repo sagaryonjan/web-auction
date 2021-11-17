@@ -41,11 +41,24 @@ dco/api/logs:
 dco/app/logs: 
 	@$(DCO) logs -f --tail 100 app
 
+dco/middleware/logs: 
+	@$(DCO) logs -f --tail 100 middleware
+
+dco/redis/logs: 
+	@$(DCO) logs -f --tail 100 redis
+
+
 dco/api/cmd:
 	@$(DCO) exec api sh
 
 dco/app/cmd:
 	@$(DCO) exec app sh
+
+dco/redis/cmd:
+	@$(DCO) exec redis sh
+
+dco/middleware/cmd:
+	@$(DCO) exec middleware sh
 
 dco/app/yarn:
 	@$(DCO) exec app yarn

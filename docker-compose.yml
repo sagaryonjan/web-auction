@@ -10,7 +10,7 @@ services:
             - ./app:/app
         ports:
             - 3000:3000
-        #depends_on:
+            #depends_on:
             #- api
     api:
         build:
@@ -56,6 +56,29 @@ services:
             - ./docker-compose/nginx:/etc/nginx/conf.d/
         networks:
             - webauction
+    redis:
+        image: redis:alpine
+        container_name: webauction-redis
+        restart: unless-stopped
+        command: [ "redis-server", "--appendonly", "yes" ]
+        ports:
+            - 6379:6379
+        networks:
+            - webauction
+    middleware:
+        build:
+            context: ./middleware
+            dockerfile: Dockerfile
+        volumes:
+            - ./middleware:/app
+        depends_on:
+            - api
+        command: [ 'node', 'index.js' ]
+        ports:
+            - 8002:8002
+        networks:
+            - webauction
+
 networks:
-  webauction:
-    driver: bridge
+    webauction:
+        driver: bridge

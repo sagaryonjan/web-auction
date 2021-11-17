@@ -1,0 +1,11 @@
+{
+  "name": "web-auction",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "express": "^4.17.1",
+    "ioredis": "^4.28.0",
+    "redis": "^3.1.2",
+    "socket.io": "^4.3.2"
+  }
+}

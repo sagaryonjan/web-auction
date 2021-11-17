@@ -5,10 +5,11 @@ import { bidProduct } from "../../services/product";
 import { defaultMessagBag, MessageBag, setSuccessMsg } from "../../utils/messageBag";
 
 interface BidProductProps {
-    product: Product
+    product: Product;
+    productBiddingSuccessfully: Function;
 }
 
-const BidProduct = ({ product }: BidProductProps) => {
+const BidProduct = ({ product, productBiddingSuccessfully }: BidProductProps) => {
 
     const [error, setError] = useState<string>('');
     const [autoBiding, setAutoBiding] = useState<boolean>(false);
@@ -21,12 +22,13 @@ const BidProduct = ({ product }: BidProductProps) => {
         if (error.status) { setError(error.message); return; }
 
         try {
-
             await bidProduct(product.id, {
                 bid_amount: bidAmount,
                 user_id: localStorage.getItem('USER_ID'),
                 auto_biding: autoBiding
             })
+
+            productBiddingSuccessfully()
         } catch (error: any) {
             if (error?.response?.status === HTTP_UNPROCESSABLE_ENTITY) {
                 const [errorMsg] = error.response.data.errors.bid_amount;

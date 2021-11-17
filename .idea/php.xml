@@ -114,6 +114,7 @@
       <path value="$PROJECT_DIR$/api/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/api/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/api/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/api/vendor/predis/predis" />
     </include_path>
   </component>
   <component name="PhpUnit">
